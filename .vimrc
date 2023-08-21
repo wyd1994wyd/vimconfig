@@ -1,4 +1,4 @@
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
+"All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
 " the call to :runtime you can find below.  If you wish to change any of those
 " settings, you should do it in this file (/etc/vim/vimrc), since debian.vim
 " will be overwritten everytime an upgrade of the vim packages is performed.
@@ -54,20 +54,35 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 syntax on
-set number
 "set cursorline
+set nocompatible
+filetype on
+filetype indent on
+filetype plugin on
+filetype plugin indent on
 set incsearch
 set hlsearch
 set smartcase
 set autoindent
 set smartindent
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap { {}<ESC>i
-inoremap < <><ESC>i
 set wildmenu
+set showcmd
 set ignorecase
+set history=200
 noremap <LEADER><CR> :nohlsearch<CR>
-colorscheme industry
 set scrolloff=5
 map <LEADER><LEADER> <Esc>/<++><CR>:nohlsearch<CR>c4l
+
+call plug#begin('~/.vim/plugged')
+
+Plug'vim-airline/vim-airline'
+Plug'preservim/nerdtree'
+Plug'connorholyday/vim-snazzy'
+"create a file  ~/.tmux.conf     set -g default-terminal "xterm-256-color"
+Plug'kien/rainbow_parentheses.vim'
+Plug'jiangmiao/auto-pairs'
+
+call plug#end()
+
+colorscheme snazzy
+
